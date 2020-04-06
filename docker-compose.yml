@@ -1,12 +1,12 @@
 version: '3'
 
 services:
-  rms_context_service:
-    image: rms_context_image:latest
+  template_name_service:
+    image: template_name_image:latest
     build: .
     command: python manage.py runserver 0.0.0.0:8000
-    container_name: rms_context_container
+    container_name: template_name_container
     volumes:
-      - .:/rms_context_volume
+      - .:/template_name_volume
     ports:
       - "8001:8000"
