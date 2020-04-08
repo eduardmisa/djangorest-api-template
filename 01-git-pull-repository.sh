@@ -1,7 +1,11 @@
-set password "repository_admin_password"
+set DEPLOYMENT_PATH [lindex $argv 0]
+set GIT_LINK [lindex $argv 1]
+set GIT_BRANCH [lindex $argv 2]
+set GIT_PASSWORD [lindex $argv 3]
 
-cd /var/www/template.templatesystem.com
-spawn git pull "http://admin@gitserver:80/scm/template_app.git" master
+cd $DEPLOYMENT_PATH
+
+spawn git pull "$GIT_LINK" $GIT_BRANCH
 expect "Password for"
-send "$password\n"
+send "$GIT_PASSWORD\n"
 interact
